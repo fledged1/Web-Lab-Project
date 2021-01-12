@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SSB LIFT Panel | Reçeteler</title>
+  <title>SSB LIFT Panel | Bayiler</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -479,12 +479,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Sipariş Geçmişi</h1>
+            <h1>Bayiler</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="http://127.0.0.1:8000">Anasayfa</a></li>
-              <li class="breadcrumb-item active">Siparişler</li>
+              <li class="breadcrumb-item active">Bayiler</li>
             </ol>
           </div>
         </div>
@@ -498,44 +498,48 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Buraya Butonlar Gelecek</h3>
+                  {%if user.is_superuser%}
+                  <div class="col-sm-2">
+                    <a  class="btn btn-block btn-primary" type="button" href="admin/SSB/retailors/add/" >Yeni Bayi</a>
+                  </div>
+                  {%endif%} 
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Sipariş Adı</th>
                     <th>Bayi Adı</th>
-                    <th>Ürün</th>
-                    <th>Sipariş Miktarı</th>
-                    <th>Sipariş Tarihi</th>
-                    <th>Tahmini Teslim Süresi</th>
-                    <th>Sipariş Toplamı</th>
+                    <th>Bayi Telefon</th>
+                    <th>Adres</th>
+                    <th>Ciro (TL)</th>
+                    <th>Geçmiş Siparişler</th>
                   </tr>
                   </thead>
                   <tbody>
-                  {%for orders in orders%}
+                  {%for retailors in retailors%}
                   <tr>
-                    <td>{{orders.orderName}}</td>
-                    <td>{{orders.dealerName}}</td>
-                    <td>{{orders.product.productName}}</td>
-                    <td>{{orders.orderAmount}}</td>
-                    <td>{{orders.orderDate}}</td>
-                    <td>{{orders.estimatedDelivery}}</td>
-                    <td>siparişToplamı</td>
+                    <td>{{retailors.retailorName}}</td>
+                    <td>{{retailors.retailorPhone}}</td>
+                    <td>{{retailors.retailorAddress}}</td>  
+                    <td>{{retailors.retailorEndorsement}}</td>
+                    <td>
+                    <form action="siparisgecmisleri.html" method="post">
+                    {%csrf_token%}
+                    <a><button class="btn btn-block btn-success"type="submit" onclick="location.href='{% url 'siparisgecmisleri' %}'" name="bayi">Siparişler</button></a> 
+                    </form>
+                    <a  class="btn btn-block btn-warning" type="button" href="admin/SSB/retailors/{{retailors.id}}/change" >Düzenle</a>
+                    </td>
                   </tr>
                   {%endfor%}
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>Sipariş Adı</th>
                     <th>Bayi Adı</th>
-                    <th>Ürün</th> 
-                    <th>Sipariş Miktarı</th>
-                    <th>Sipariş Tarihi</th>
-                    <th>Tahmini Teslim Süresi</th>
-                    <th>Sipariş Toplamı</th>
+                    <th>Bayi Telefon</th>
+                    <th>Adres</th>
+                    <th>Ciro (TL)</th>
+                    <th>Geçmiş Siparişler</th>
                   </tr>
                   </tfoot>
                 </table>
