@@ -1,5 +1,5 @@
 from django.db import models
-
+from SSB.models import Products
 # Create your models here.
 class SideBarElements:
     id : int
