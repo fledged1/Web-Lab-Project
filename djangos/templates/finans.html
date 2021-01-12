@@ -767,38 +767,39 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            <div class="col-md-6">
-              <div class="card card-info">
+            <div class="col-md-12">
+              <div class="col-md-4">
+                <div class="card card-info">
               <!--pie chart-->
-                <div class="card-header">
-                 <h3 class="card-title">Fiyatlarına Göre Ürünler</h3>
+                  <div class="card-header">
+                  <h3 class="card-title">Fiyatlarına Göre Ürünler</h3>
 
-                  <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                      <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                      <i class="fas fa-times"></i>
-                    </button>
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                      </button>
+                      <button type="button" class="btn btn-tool" data-card-widget="remove">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
                   </div>
-                </div>
-                <div class="card-body">
-                  <div class="chart">
-                    <canvas id="finans" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                  </div>
-                   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+                  <div class="card-body">
+                    <div class="chart">
+                      <canvas id="finans" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                    </div>
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
                     <script>
                       var config = {
                       type: 'pie',
                       data: {
                         datasets: [{
-                          data: {{ data|safe }},
+                          data: {{ data1|safe }},
                           backgroundColor: [
                             '#17A2B8', '#E5C107', '#D13841', '#C0C0C0', '#D3D3D3'
                           ],
                           label: 'Population'
                         }],
-                        labels: {{ names|safe }}
+                        labels: {{ names1|safe }}
                         },
                         options: {
                           responsive: true
@@ -810,7 +811,6 @@
                       };
                       </script>
                 </div>
-              </div>
               <!--/.pie chart-->
               <!-- /.card-body -->
             </div>
@@ -826,9 +826,9 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.1.0-rc
+      <b>Versiyon</b> 0.2.1-alpha
     </div>
-    <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2020-2021 <a>SSB Lift AŞ</a>.</strong> Tüm Hakları Saklıdır.
   </footer>
 
   <!-- Control Sidebar -->
