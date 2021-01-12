@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'BAYI.apps.BayiConfig',
     'SSB.apps.SsbConfig',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -9,9 +9,7 @@ class SideBarElements:
 
 class Customers (models.Model):
     customerName = models.CharField(max_length=100)
-    customerName = models.CharField(max_length=50)
-    orderedProduct = models.ForeignKey(
-         Products, on_delete=models.CASCADE)
-    orderAmount = models.IntegerField(default=0)
-    orderDate = models.DateField()
-    estimatedDelivery = models.DateField()
+    customerPhone = models.CharField(max_length=50)
+    customerMail = models.CharField(max_length=50)
+    customerAddress = models.CharField(max_length=50)
+    retailorEndorsement = models.FloatField(default=0,verbose_name='Ciro (TL)')
