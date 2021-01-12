@@ -30,9 +30,19 @@ def index(request):
     element7 = SideBarElements()
     element7.elementName = 'Finans'
     
-    #////////\\\\\\\\\
+    #piechart
+    names = []
+    data = []
+    queryset = Materials.objects.order_by('-materialStockCount')[:10]
+    for material in queryset:
+        names.append(material.materialName)
+        data.append(material.materialStockCount)
+
+    retailorCount = Retailors.objects.count
+    ordersCount = Orders.objects.count
+
     
-    return render(request,'index.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7})
+    return render(request,'index.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'names': names,'data': data,'retailorCount':retailorCount,'ordersCount':ordersCount})
 
 
 def hammaddeler(request):
