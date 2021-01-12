@@ -196,6 +196,11 @@ def finans(request):
         names.append(product.productName)
         data.append(product.productPrice)
 
- 
+    names1 = []
+    data1 = []
+    queryset1 = Materials.objects.order_by('-materialStockCount')[:10]
+    for material in queryset1:
+        names1.append(material.materialName)
+        data1.append(material.materialStockCount)
     
-    return render(request,'finans.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'names': names,'data': data,})
+    return render(request,'finans.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'names': names,'data': data,'names1': names1,'data1': data1,})
