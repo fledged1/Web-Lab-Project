@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SSB LIFT Panel | Bayiler</title>
+  <title>SSB LIFT Panel | Hammaddeler</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -170,12 +170,9 @@
         <div class="image">
           <img src="{%static 'dist/img/user2-160x160.jpg'%}" class="img-circle elevation-2" alt="User Image">
         </div>
-        {%if user.is_authenticated%}
         <div class="info">
-          <a href="#" class="d-block">
-              Hoşgeldiniz, {{user.first_name}}
+          <a href="#" class="d-block">{{user1.userName}}</a>
         </div>
-        {% endif %}</a>
       </div>
 
       <!-- SidebarSearch Form -->
@@ -195,66 +192,14 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/bayi" class="nav-link">
               <i class="fas fa-home"></i>
               <p>
                 {{element1.elementName}}
               </p>
             </a>
-          </li>
-          
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{%static 'pages/layout/top-nav.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{%static 'pages/layout/top-nav-sidebar.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Top Navigation + Sidebar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{%static 'pages/layout/boxed.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Boxed</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{%static 'pages/layout/fixed-sidebar.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Sidebar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{%static 'pages/layout/fixed-sidebar-custom.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{%static 'pages/layout/fixed-topnav.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Navbar</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{%static 'pages/layout/fixed-footer.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fixed Footer</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{%static 'pages/layout/collapsed-sidebar.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Collapsed Sidebar</p>
-                </a>
-              </li>
-            </ul>
+          </li>   
           </li>
           <li class="nav-item">
             <a href="/bayi/bayi_Urunler.html" class="nav-link">
@@ -263,9 +208,15 @@
                 {{element2.elementName}}
               </p>
             </a>
-            
           </li>
-
+          <li class="nav-item">
+            <a href="/bayi/bayi_Musteriler.html" class="nav-link">
+              <i class="fas fa-boxes"></i>
+              <p>
+                {{element6.elementName}}
+              </p>
+            </a>
+          </li>
            <li class="nav-item">
             <a class="nav-link">
               <i class="fas fa-sitemap"></i>
@@ -287,183 +238,15 @@
                   <p>{{element4.elementName}}</p>
                 </a>
               </li>
-              
-           <li class="nav-item">
-            
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{%static 'pages/UI/general.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>General</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{%static 'pages/UI/icons.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Icons</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{%static 'pages/UI/buttons.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Buttons</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{%static 'pages/UI/sliders.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sliders</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{%static 'pages/UI/modals.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Modals & Alerts</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{%static 'pages/UI/navbar.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Navbar & Tabs</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{%static 'pages/UI/timeline.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Timeline</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{%static 'pages/UI/ribbons.html'%}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ribbons</p>
-                </a>
-              </li>
             </ul>
-          </li>
-          
-            
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Login & Register v1
-                    <i class="fas fa-angle-left right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="pages/examples/login.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Login v1</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/examples/register.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Register v1</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/examples/forgot-password.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Forgot Password v1</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/examples/recover-password.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Recover Password v1</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>
-                    Login & Register v2
-                    <i class="fas fa-angle-left right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="pages/examples/login-v2.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Login v2</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/examples/register-v2.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Register v2</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/examples/forgot-password-v2.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Forgot Password v2</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="pages/examples/recover-password-v2.html" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Recover Password v2</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/lockscreen.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Lockscreen</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/legacy-user-menu.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Legacy User Menu</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/language-menu.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Language Menu</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/404.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Error 404</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/500.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Error 500</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/pace.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Pace</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="pages/examples/blank.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Blank Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="starter.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Starter Page</p>
-                </a>
-              </li>
-            </ul>
+            <li class="nav-item">
+              <a href="/bayi/bayi_Finans.html" class="nav-link">
+                <i class="fas fa-boxes"></i>
+                <p>
+                  {{element7.elementName}}
+                </p>
+              </a>
+            </li>
           </li>
         </ul>
       </nav>
@@ -479,12 +262,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Bayiler</h1>
+            <h1>Hammaddeler</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="http://127.0.0.1:8000">Anasayfa</a></li>
-              <li class="breadcrumb-item active">Bayiler</li>
+              <li class="breadcrumb-item active">Hammaddeler</li>
             </ol>
           </div>
         </div>
@@ -498,50 +281,37 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                  {%if user.is_superuser%}
+                <div class="col-sm-10">
+                </div>
+                {%if user.is_superuser%}
                   <div class="col-sm-2">
-                    <a  class="btn btn-block btn-primary" type="button" href="admin/SSB/retailors/add/" >Yeni Bayi</a>
+                    <a  class="btn btn-block btn-primary" type="button" href="/admin/SSB/materials/add/" >Yeni Hammadde</a>
                   </div>
-                  {%endif%} 
+                {%endif%} 
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Bayi Adı</th>
-                    <th>Bayi Telefon</th>
-                    <th>Adres</th>
+                    <th>Müşteri Adı</th>
+                    <th>Müşteri Telefon</th>
+                    <th>Müşteri Mail</th>
+                    <th>Müşteri Adresi</th>
                     <th>Ciro (TL)</th>
-                    <th>Geçmiş Siparişler</th>
                   </tr>
                   </thead>
                   <tbody>
-                  {%for retailors in retailors%}
+                  {%for customers in customers%}
                   <tr>
-                    <td>{{retailors.retailorName}}</td>
-                    <td>{{retailors.retailorPhone}}</td>
-                    <td>{{retailors.retailorAddress}}</td>  
-                    <td>{{retailors.retailorEndorsement}}</td>
-                    <td>
-                    <form action="siparisgecmisleri.html" method="post">
-                    {%csrf_token%}
-                    <a><button class="btn btn-block btn-success"type="submit" onclick="location.href='{% url 'siparisgecmisleri' %}'" name="bayi">Siparişler</button></a> 
-                    </form>
-                    <a  class="btn btn-block btn-warning" type="button" href="admin/SSB/retailors/{{retailors.id}}/change" >Düzenle</a>
-                    </td>
+                    <td>{{customers.customerName}}</td>
+                    <td>{{customers.customerPhone}}</td>
+                    <td>{{customers.customerMail}}</td>
+                    <td> {{customers.customerAddress}}</td>
+                    <td>{{customers.retailorEndorsement}}</td>
                   </tr>
                   {%endfor%}
                   </tbody>
-                  <tfoot>
-                  <tr>
-                    <th>Bayi Adı</th>
-                    <th>Bayi Telefon</th>
-                    <th>Adres</th>
-                    <th>Ciro (TL)</th>
-                    <th>Geçmiş Siparişler</th>
-                  </tr>
-                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->
