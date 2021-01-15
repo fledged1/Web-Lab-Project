@@ -8,8 +8,7 @@ class SideBarElements:
     subElementsCount : int
 
 class Customers (models.Model):
-    customerName = models.CharField(max_length=100)
-    customerPhone = models.CharField(max_length=50)
-    customerMail = models.CharField(max_length=50)
-    customerAddress = models.CharField(max_length=50)
-    retailorEndorsement = models.FloatField(default=0,verbose_name='Ciro (TL)')
+    customerName = models.CharField(max_length=100, verbose_name='Müşteri Adı, Soyadı')
+    customerPhone = models.CharField(max_length=50,verbose_name='Müşteri Telefonu')
+    customerMail = models.CharField(max_length=50,verbose_name='Müşteri Maili')
+    customerAddress = models.CharField(max_length=50,verbose_name='Müşteri Adresi')

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SSB LIFT Panel | Hammaddeler</title>
+  <title>SSB LIFT Panel | Finans</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -171,14 +171,14 @@
           <img src="{%static 'dist/img/user2-160x160.jpg'%}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{user1.userName}}</a>
+          <a href="#" class="d-block">{{user.first_name}}</a>
         </div>
       </div>
 
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Ara" aria-label="Search">
           <div class="input-group-append">
             <button class="btn btn-sidebar">
               <i class="fas fa-search fa-fw"></i>
@@ -262,12 +262,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Hammaddeler</h1>
+            <h1>Finans</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="http://127.0.0.1:8000">Anasayfa</a></li>
-              <li class="breadcrumb-item active">Hammaddeler</li>
+              <li class="breadcrumb-item active">Finans</li>
             </ol>
           </div>
         </div>
@@ -281,39 +281,102 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <div class="col-sm-10">
-                </div>
+                  {%if user.is_superuser%}
                   <div class="col-sm-2">
-                    <a  class="btn btn-block btn-primary" type="button" href="/admin/BAYI/customers/add/" >Yeni Müşteri</a>
+                    <a  class="btn btn-block btn-primary" type="button" href="admin/SSB/retailors/add/" >Yeni Bayi</a>
                   </div>
-                
+                  {%endif%} 
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Müşteri Adı</th>
-                    <th>Müşteri Telefon</th>
-                    <th>Müşteri Mail</th>
-                    <th>Müşteri Adresi</th>
+                    <th>Bayi Adı</th>
+                    <th>Bayi Telefon</th>
+                    <th>Adres</th>
+                    <th>Ciro (TL)</th>
+                    <th>Geçmiş Siparişler</th>
                   </tr>
                   </thead>
                   <tbody>
-                  {%for customers in customers%}
+                  {%for retailors in retailors%}
                   <tr>
-                    <td>{{customers.customerName}}</td>
-                    <td>{{customers.customerPhone}}</td>
-                    <td>{{customers.customerMail}}</td>
-                    <td> {{customers.customerAddress}}</td>
+                    <td>{{retailors.retailorName}}</td>
+                    <td>{{retailors.retailorPhone}}</td>
+                    <td>{{retailors.retailorAddress}}</td>  
+                    <td>{{retailors.retailorEndorsement}}</td>
+                    <td>
+                    <form action="siparisgecmisleri.html" method="post">
+                    {%csrf_token%}
+                    <a><button class="btn btn-block btn-success"type="submit" onclick="location.href='{% url 'siparisgecmisleri' %}'" name="bayi">Siparişler</button></a> 
+                    </form>
+                    <a  class="btn btn-block btn-warning" type="button" href="admin/SSB/retailors/{{retailors.id}}/change" >Düzenle</a>
+                    </td>
                   </tr>
                   {%endfor%}
                   </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>Bayi Adı</th>
+                    <th>Bayi Telefon</th>
+                    <th>Adres</th>
+                    <th>Ciro (TL)</th>
+                    <th>Geçmiş Siparişler</th>
+                  </tr>
+                  </tfoot>
                 </table>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
+            <div class="col-md-12">
+              <div class="col-md-4">
+                <div class="card card-info">
+              <!--pie chart-->
+                  <div class="card-header">
+                  <h3 class="card-title">Fiyatlarına Göre Ürünler</h3>
+
+                    <div class="card-tools">
+                      <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                      </button>
+                      <button type="button" class="btn btn-tool" data-card-widget="remove">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="chart">
+                      <canvas id="finans" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                    </div>
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+                    <script>
+                      var config = {
+                      type: 'pie',
+                      data: {
+                        datasets: [{
+                          data: {{ data1|safe }},
+                          backgroundColor: [
+                            '#17A2B8', '#E5C107', '#D13841', '#C0C0C0', '#D3D3D3'
+                          ],
+                          label: 'Population'
+                        }],
+                        labels: {{ names1|safe }}
+                        },
+                        options: {
+                          responsive: true
+                        }
+                      };
+                      window.onload = function() {
+                        var ctx = document.getElementById('finans').getContext('2d');
+                        window.myPie = new Chart(ctx, config);
+                      };
+                      </script>
+                </div>
+              <!--/.pie chart-->
+              <!-- /.card-body -->
+            </div>
           </div>
           <!-- /.col -->
         </div>
@@ -326,9 +389,9 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.1.0-rc
+      <b>Versiyon</b> 0.2.1-alpha
     </div>
-    <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2020-2021 <a>SSB Lift AŞ</a>.</strong> Tüm Hakları Saklıdır.
   </footer>
 
   <!-- Control Sidebar -->
@@ -356,6 +419,7 @@
 <script src="{%static 'plugins/datatables-buttons/js/buttons.html5.min.js'%}"></script>
 <script src="{%static 'plugins/datatables-buttons/js/buttons.print.min.js'%}"></script>
 <script src="{%static 'plugins/datatables-buttons/js/buttons.colVis.min.js'%}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{%static 'dist/js/adminlte.min.js'%}"></script>
 <!-- AdminLTE for demo purposes -->

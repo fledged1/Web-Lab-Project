@@ -8,4 +8,5 @@ urlpatterns = [
     path('bayi_Musteriler.html',views.Musteriler,name='Müşteriler'),
     path('bayi_Siparisler.html',views.Siparisler,name='Siparişler'),
     path('bayi_MusteriSiparis.html',views.MusteriSiparisler,name='Müşteri Siparişleri'),
+    path('bayi_Finans.html',views.Finans,name='Finans'),
 ]
