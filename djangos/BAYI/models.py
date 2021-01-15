@@ -1,5 +1,6 @@
 from django.db import models
 from SSB.models import Products
+from SSB.models import Orders
 # Create your models here.
 class SideBarElements:
     id : int
@@ -12,3 +13,5 @@ class Customers (models.Model):
     customerPhone = models.CharField(max_length=50,verbose_name='Müşteri Telefonu')
     customerMail = models.CharField(max_length=50,verbose_name='Müşteri Maili')
     customerAddress = models.CharField(max_length=50,verbose_name='Müşteri Adresi')
+
+  

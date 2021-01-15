@@ -283,8 +283,8 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Buraya Butonlar Gelecek</h3>
+              <div class="col-sm-2">
+                <a  class="btn btn-block btn-primary" type="button" href="/admin/SSB/orders/add/" >Yeni Sipariş</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -292,37 +292,28 @@
                   <thead>
                   <tr>
                     <th>Sipariş Adı</th>
-                    <th>Bayi Adı</th>
-                    <th>Ürün</th>
+                    <th>Fabrika Adı</th>
+                    <th>Ürün Adı</th>
                     <th>Sipariş Miktarı</th>
                     <th>Sipariş Tarihi</th>
-                    <th>Tahmini Teslim Süresi</th>
-                    <th>Sipariş Toplamı</th>
+                    <th>Tahmini Teslim Tarihi</th>
+                    <th>Sipariş Durumu</th>
                   </tr>
                   </thead>
                   <tbody>
                   {%for orders in orders%}
                   <tr>
                     <td>{{orders.orderName}}</td>
-                    <td>{{orders.dealerName}}</td>
-                    <td>{{orders.product.productName}}</td>
+                    <td>{{orders.retailor}}</td>
+                    <td>{{orders.orderedProduct}}</td>
                     <td>{{orders.orderAmount}}</td>
                     <td>{{orders.orderDate}}</td>
                     <td>{{orders.estimatedDelivery}}</td>
-                    <td>siparişToplamı</td>
+                    <td>{{orders.orderStatus}}</td>
                   </tr>
                   {%endfor%}
                   </tbody>
                   <tfoot>
-                  <tr>
-                    <th>Sipariş Adı</th>
-                    <th>Bayi Adı</th>
-                    <th>Ürün</th> 
-                    <th>Sipariş Miktarı</th>
-                    <th>Sipariş Tarihi</th>
-                    <th>Tahmini Teslim Süresi</th>
-                    <th>Sipariş Toplamı</th>
-                  </tr>
                   </tfoot>
                 </table>
               </div>
