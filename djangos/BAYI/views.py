@@ -5,6 +5,19 @@ from SSB.models import Products
 from SSB.models import Orders
 from SSB.models import Materials
 from BAYI.models import Customers
+from django.contrib.auth.models import User, Group
+from rest_framework import viewsets
+from rest_framework import permissions
+from BAYI.serializers import GroupSerializer
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Customers.objects.all()
+    serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticated]
 # Create your views here.
 
 def home(request):
