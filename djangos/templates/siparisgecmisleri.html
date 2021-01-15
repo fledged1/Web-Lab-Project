@@ -279,6 +279,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="http://127.0.0.1:8000">Anasayfa</a></li>
+              <li class="breadcrumb-item"><a href="/bayiler.html">Bayiler</a></li>
               <li class="breadcrumb-item active">Sipariş Geçmişleri</li>
             </ol>
           </div>
@@ -305,16 +306,12 @@
                   </tr>
                   </thead>
                   <tbody>
-                  {%for bayi in orders%}
+                  {%for bayi in query%}
                   <tr>
-                    <td>{{orders.orderedProduct.productName}}</td>
-                    <td>{{orders.orderAmount}}</td>
-                    <td>{{retailors.retailorAddress}}</td>  
-                    <td>{{retailors.retailorEndorsement}}</td>
-                    <td>
-                    <a  class="btn btn-block btn-success" type="button" href="admin/SSB/retailors/add/" >Siparişler</a>
-                    <a  class="btn btn-block btn-warning" type="button" href="admin/SSB/retailors/{{retailors.id}}/change" >Düzenle</a>
-                    </td>
+                    <td>{{bayi.orderedProduct}}</td>
+                    <td>{{bayi.orderAmount}}</td>
+                    <td>{{bayi.orderDate}}</td>  
+                    <td>{{bayi.orderTotal}} TL</td>        
                   </tr>
                   {%endfor%}
                   </tbody>

@@ -1,11 +1,15 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
 from .models import SideBarElements
 from .models import Products
 from .models import Materials
 from .models import Recipes
 from .models import Orders
 from .models import Retailors
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 # Create your views here.
     
@@ -60,9 +64,13 @@ def hammaddeler(request):
     element6.elementName = 'Bayiler'
     element7 = SideBarElements()
     element7.elementName = 'Finans'
-   
+    
+
+  
+
     materials = Materials.objects.all()
-    return render(request,'hammaddeler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'materials':materials})
+    
+    return render(request,'hammaddeler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'materials':materials,})
 
 def urunler(request):
     element1 = SideBarElements()
@@ -102,11 +110,36 @@ def receteler(request):
     element7.elementName = 'Finans'
 
     
-
+    
+    #uery = Orders.objects.filter(retailor__exact = 1)
     recipes = Recipes.objects.all()
+   
     
 
-    return render(request,'receteler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'recipes':recipes})
+    return render(request,'receteler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'recipes':recipes,})
+
+def recetehammaddeler(request):
+    element1 = SideBarElements()
+    element1.elementName = 'Anasayfa'
+    element2 = SideBarElements()
+    element2.elementName = 'Ürünler'
+    element3 = SideBarElements()
+    element3.elementName = 'Hammaddeler'
+    element4 = SideBarElements()
+    element4.elementName = 'Reçeteler'
+    element5 = SideBarElements()
+    element5.elementName = 'Siparişler'
+    element6 = SideBarElements()
+    element6.elementName = 'Bayiler'
+    element7 = SideBarElements()
+    element7.elementName = 'Finans'
+
+    recipes = Recipes.objects.all()
+   
+    
+
+    return render(request,'recetehammaddeler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'recipes':recipes,})
+
 
 def siparisler(request):
     element1 = SideBarElements()
@@ -124,11 +157,10 @@ def siparisler(request):
     element7 = SideBarElements()
     element7.elementName = 'Finans'
 
-    
+
+    orders = Orders.objects.all()    
 
     
-    
-    orders = Orders.objects.all()    
     return render(request,'siparisler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'orders':orders})
 
 def bayiler(request):
@@ -162,16 +194,16 @@ def siparisgecmisleri(request):
     element3.elementName = 'Hammaddeler'
     element4 = SideBarElements()
     element4.elementName = 'Reçeteler'
-    element5 = SideBarElements()
+    element5 = SideBarElements()    
     element5.elementName = 'Siparişler'
     element6 = SideBarElements()
     element6.elementName = 'Bayiler'
     element7 = SideBarElements()
     element7.elementName = 'Finans'
     
+    query = Orders.objects.filter(retailor__exact = 1)
     
-    
-    return render(request,'siparisgecmisleri.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,})
+    return render(request,'siparisgecmisleri.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'query':query})
 
 def finans(request):
     element1 = SideBarElements()
@@ -203,4 +235,5 @@ def finans(request):
         names1.append(material.materialName)
         data1.append(material.materialStockCount)
     
-    return render(request,'finans.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'names': names,'data': data,'names1': names1,'data1': data1,})
+    return render(request,'finans.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,
+    'names': names,'data': data,'names1': names1,'data1': data1,})

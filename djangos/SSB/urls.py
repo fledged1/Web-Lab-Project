@@ -9,5 +9,5 @@ urlpatterns=[
     path('bayiler.html',views.bayiler,name='bayiler'),
     path('siparisgecmisleri.html',views.siparisgecmisleri,name='siparisgecmisleri'),
     path('finans.html',views.finans,name='finans'),
-    
+    path('recetehammaddeler.html',views.recetehammaddeler,name='recetehammaddeler')    
 ]

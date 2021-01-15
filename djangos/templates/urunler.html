@@ -30,7 +30,7 @@
         <a href = "http://127.0.0.1:8000" class="nav-link">Anasayfa</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Bize Ulaşın</a>
+        <a href="accounts/logout" class="nav-link">Çıkış Yap</a>
       </li>
     </ul>
 
@@ -42,7 +42,7 @@
         <div class="navbar-search-block">
           <form class="form-inline">
             <div class="input-group input-group-sm-inline-block">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control form-control-navbar" type="search" placeholder="Arama Yap" aria-label="Search">
               <div class="input-group-append">
                 <button class="btn btn-navbar" type="submit">
                   <i class="fas fa-search"></i>
@@ -252,7 +252,7 @@
           </li>
       
            <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/finans.html" class="nav-link">
               <i class="fas fa-file-invoice-dollar fa-lg"></i>
               <p>
                 {{element7.elementName}}
@@ -319,6 +319,7 @@
                           <p style ="font-family: 'Source Sans Pro', sans-serif" class="text-dark"><i>{{products.productDescription}}</i></p>
                           <p style ="font-family: 'Source Sans Pro', sans-serif" class="text-dark">Sipariş Numarası : {{products.productSerial}}</p>
                           <p style ="font-family: 'Source Sans Pro', sans-serif" class="text-dark">Tahmini Teslim : {{products.estimatedDelivery}} gün</p>
+                          <p style ="font-family: 'Source Sans Pro', sans-serif" class="text-dark">Stok : {{products.productStock}} adet</p>
                           {%if user.is_superuser%}
                           <div class="col-sm-12">
                             <a  class="btn btn-block btn-danger" type="button" href="admin/SSB/products/{{products.id}}/change/" >Düzenle</a>

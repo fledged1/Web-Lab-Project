@@ -9,16 +9,20 @@ from .models import Orders
 # Register your models here.
 
 admin.site.register(Users)
-admin.site.register(Recipes)
 admin.site.register(Retailors)
 
+class RecipesAdmin(admin.ModelAdmin):
+    fields=['recipeName','product','recipeCreationDate','materials','recipeSingleProductPrice','recipeAdditionalCosts','recipeProductionCount']
+admin.site.register(Recipes,RecipesAdmin)
+
+
 class ProductsAdmin(admin.ModelAdmin):
-    fields=['productName','productImage','productDescription','productSerial','productPrice','estimatedDelivery']
+    fields=['productName','productImage','productDescription','productSerial','productPrice','estimatedDelivery','productStock']
 admin.site.register(Products,ProductsAdmin)
 
     
 class OrdersAdmin(admin.ModelAdmin):
-    fields=['orderName','retailor','orderedProduct','orderAmount','orderDate','estimatedDelivery']
+    fields=['orderName','retailor','orderedProduct','orderAmount','orderDate','estimatedDelivery','orderStatus']
 admin.site.register(Orders,OrdersAdmin)
 
 class MaterialsAdmin(admin.ModelAdmin):

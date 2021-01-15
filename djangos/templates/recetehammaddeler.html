@@ -303,30 +303,24 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Reçete Adı</th>
-                    <th>Ürün</th>
-                    <th>Üretim Adedi</th>
-                    <th>Tek Ürün Maliyeti</th>
-                    <th>Toplam Reçete Maliyeti</th>
-                    <th>Ek Giderler</th>
-                    <th>Reçete Oluşturma Tarihi</th>
-                    <th>Hammaddeler</th>
-                    <th>İşlemler</th>
+                    <th>Hammadde</th>
+                    <th>Kullanım Miktarı</th>
+                    <th>Maliyet</th>
                   </tr>
                   </thead>
                   <tbody>
                   {%for recipes in recipes%}
                   <tr>
-                    <td>{{recipes.recipeName}}</td>
+                    <td>{{recipes.materials.all}}</td>
                     <td>{{recipes.product.productName}}</td>
                     <td>{{recipes.recipeProductionCount}}</td>
                     <td>{{recipes.recipeSingleProductPrice}}</td>
                     <td>{{recipes.recipeTotal}}</td>
                     <td>{{recipes.recipeAdditionalCosts}}</td>
                     <td>{{recipes.recipeCreationDate}}</td>
-                    <td>{{recipes.materials.all}}</td>
+                    <td>{{recipes.materials.count}}</td>
                     <td>
-                    <a  class="btn btn-block btn-success" type="button" href="/recetehammaddeler.html" >Görüntüle</a>
+                    <a  class="btn btn-block btn-success" type="button" href="admin/SSB/retailors/add/" >Görüntüle</a>
                     <a  class="btn btn-block btn-warning" type="button" href="admin/SSB/recipes/{{recipes.id}}/change" >Düzenle</a>
                     </td>
                   </tr>
@@ -334,15 +328,9 @@
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>Reçete Adı</th>
-                    <th>Ürün</th>
-                    <th>Üretim Adedi</th>
-                    <th>Tek Ürün Maliyeti</th>
-                    <th>Toplam Reçete Maliyeti</th>
-                    <th>Ek Giderler</th>
-                    <th>Reçete Oluşturma Tarihi</th>
-                    <th>Hammaddeler</th>
-                    <th>İşlemler</th>
+                    <th>Hammadde</th>
+                    <th>Kullanım Miktarı</th>
+                    <th>Maliyet</th>
                   </tr>
                   </tfoot>
                 </table>

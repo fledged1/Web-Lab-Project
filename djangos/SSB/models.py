@@ -33,15 +33,19 @@ class Materials (models.Model):
     def __str__(self):
         return self.materialName
 class Recipes (models.Model):
-    recipeName = models.CharField(max_length=100)
+    recipeName = models.CharField(max_length=100,verbose_name="Reçete Adı")
     product = models.ForeignKey(
-        Products, on_delete=models.CASCADE)
+        Products, on_delete=models.CASCADE,verbose_name="Ürün")
     recipeCreationDate = models.DateField()
-    recipeSingleProductPrice = models.FloatField(default=0)
-    recipeAdditionalCosts = models.FloatField(default=0)
-    recipeProductionCount = models.IntegerField(default=0)
+    materials = models.ManyToManyField(
+        Materials,verbose_name="Hammaddeler")
+    recipeSingleProductPrice = models.FloatField(default=0,verbose_name='Tek Ürün Maliyeti')
+    recipeAdditionalCosts = models.FloatField(default=0,verbose_name="Ek Giderler")
+    recipeProductionCount = models.IntegerField(default=0,verbose_name="Üretim Adedi")
     def __str__(self):
         return self.recipeName
+    def recipeTotal(self):
+        return (self.recipeSingleProductPrice * self.recipeProductionCount) + self.recipeAdditionalCosts
 class Retailors (models.Model):
     retailorName = models.CharField(default='',max_length=100,verbose_name='Bayi Adı')
     retailorPhone = models.CharField(max_length=50,verbose_name='Telefon')
@@ -59,9 +63,8 @@ class Orders (models.Model):
     orderAmount = models.IntegerField(default=0,verbose_name='Sipariş Miktarı')
     orderDate = models.DateField(verbose_name='Sipariş Tarihi')
     estimatedDelivery = models.DateField(verbose_name='Tahmini Teslim Süresi')
+    orderStatus = models.BooleanField(default=False,verbose_name='Tamamlandı')
     def __str__(self):
         return self.orderName
     def orderTotal(self):
         return self.orderAmount * self.orderedProduct.productPrice
-
-
