@@ -283,11 +283,10 @@
               <div class="card-header">
                 <div class="col-sm-10">
                 </div>
-                {%if user.is_superuser%}
                   <div class="col-sm-2">
-                    <a  class="btn btn-block btn-primary" type="button" href="/admin/SSB/materials/add/" >Yeni Hammadde</a>
+                    <a  class="btn btn-block btn-primary" type="button" href="/admin/BAYI/customers/add/" >Yeni Müşteri</a>
                   </div>
-                {%endif%} 
+                
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -298,7 +297,6 @@
                     <th>Müşteri Telefon</th>
                     <th>Müşteri Mail</th>
                     <th>Müşteri Adresi</th>
-                    <th>Ciro (TL)</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -308,7 +306,6 @@
                     <td>{{customers.customerPhone}}</td>
                     <td>{{customers.customerMail}}</td>
                     <td> {{customers.customerAddress}}</td>
-                    <td>{{customers.retailorEndorsement}}</td>
                   </tr>
                   {%endfor%}
                   </tbody>
