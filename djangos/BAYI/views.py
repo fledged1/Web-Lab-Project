@@ -6,6 +6,8 @@ from SSB.models import Orders
 from SSB.models import Materials
 from BAYI.models import Customers
 from BAYI.models import CustomersOrders
+from BAYI.models import Payment
+from BAYI.models import Maintenance
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
@@ -36,8 +38,12 @@ def home(request):
     element6 = SideBarElements()
     element6.elementName = 'Müşteriler'
     element7 = SideBarElements()
-    element7.elementName = 'Finans'
-    return render(request,'bayi_Index.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7})
+    element7.elementName = 'Bakım'
+    element8 = SideBarElements()
+    element8.elementName = 'Ödemelerim'
+    element9 = SideBarElements()
+    element9.elementName = 'Finans'
+    return render(request,'bayi_Index.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5, 'element6':element6, 'element7':element7,'element8':element8, 'element9':element9})
 
 def Urunler(request):
     element1 = SideBarElements()
@@ -53,9 +59,13 @@ def Urunler(request):
     element6 = SideBarElements()
     element6.elementName = 'Müşteriler'
     element7 = SideBarElements()
-    element7.elementName = 'Finans'
+    element7.elementName = 'Bakım'
+    element8 = SideBarElements()
+    element8.elementName = 'Ödemelerim'
+    element9 = SideBarElements()
+    element9.elementName = 'Finans'
     products = Products.objects.all()
-    return render(request,'bayi_Urunler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7, 'products':products})
+    return render(request,'bayi_Urunler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5, 'element6':element6, 'element7':element7,'element8':element8, 'element9':element9, 'products':products})
 
 def Musteriler(request):
     element1 = SideBarElements()
@@ -71,9 +81,13 @@ def Musteriler(request):
     element6 = SideBarElements()
     element6.elementName = 'Müşteriler'
     element7 = SideBarElements()
-    element7.elementName = 'Finans'
+    element7.elementName = 'Bakım'
+    element8 = SideBarElements()
+    element8.elementName = 'Ödemelerim'
+    element9 = SideBarElements()
+    element9.elementName = 'Finans'
     customers = Customers.objects.all()
-    return render(request,'bayi_Musteriler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5, 'element6':element6, 'element7':element7,'customers':customers})
+    return render(request,'bayi_Musteriler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5, 'element6':element6, 'element7':element7,'element8':element8, 'element9':element9,'customers':customers})
 
 def Siparisler(request):
     element1 = SideBarElements()
@@ -89,9 +103,13 @@ def Siparisler(request):
     element6 = SideBarElements()
     element6.elementName = 'Müşteriler'
     element7 = SideBarElements()
-    element7.elementName = 'Finans'
+    element7.elementName = 'Bakım'
+    element8 = SideBarElements()
+    element8.elementName = 'Ödemelerim'
+    element9 = SideBarElements()
+    element9.elementName = 'Finans'
     orders = Orders.objects.all()
-    return render(request,'bayi_Siparisler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5, 'element6':element6, 'element7':element7,'orders':orders})
+    return render(request,'bayi_Siparisler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5, 'element6':element6, 'element7':element7,'element8':element8, 'element9':element9,'orders':orders})
 
 def MusteriSiparisler(request):
     element1 = SideBarElements()
@@ -107,9 +125,13 @@ def MusteriSiparisler(request):
     element6 = SideBarElements()
     element6.elementName = 'Müşteriler'
     element7 = SideBarElements()
-    element7.elementName = 'Finans'
+    element7.elementName = 'Bakım'
+    element8 = SideBarElements()
+    element8.elementName = 'Ödemelerim'
+    element9 = SideBarElements()
+    element9.elementName = 'Finans'
     customersorders = CustomersOrders.objects.all()
-    return render(request,'bayi_MusteriSiparis.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5, 'element6':element6, 'element7':element7,'customersorders':customersorders})
+    return render(request,'bayi_MusteriSiparis.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5, 'element6':element6, 'element7':element7,'element8':element8, 'element9':element9,'customersorders':customersorders})
 
 def Finans(request):
     element1 = SideBarElements()
@@ -117,15 +139,19 @@ def Finans(request):
     element2 = SideBarElements()
     element2.elementName = 'Ürünler'
     element3 = SideBarElements()
-    element3.elementName = 'Hammaddeler'
+    element3.elementName = 'Siparişler'
     element4 = SideBarElements()
-    element4.elementName = 'Reçeteler'
+    element4.elementName = 'Müşteri Siparişleri'
     element5 = SideBarElements()
-    element5.elementName = 'Siparişler'
+    element5.elementName = 'Siparişlerim'
     element6 = SideBarElements()
-    element6.elementName = 'Bayiler'
+    element6.elementName = 'Müşteriler'
     element7 = SideBarElements()
-    element7.elementName = 'Finans'
+    element7.elementName = 'Bakım'
+    element8 = SideBarElements()
+    element8.elementName = 'Ödemelerim'
+    element9 = SideBarElements()
+    element9.elementName = 'Finans'
     
     names = []
     data = []
@@ -141,4 +167,48 @@ def Finans(request):
         names1.append(material.materialName)
         data1.append(material.materialStockCount)
     
-    return render(request,'bayi_Finans.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'names': names,'data': data,'names1': names1,'data1': data1,})
+    return render(request,'bayi_Finans.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5, 'element6':element6, 'element7':element7,'element8':element8, 'element9':element9, 'names': names,'data': data,'names1': names1,'data1': data1,})
+
+def Odemelerim(request):
+    element1 = SideBarElements()
+    element1.elementName = 'Anasayfa'
+    element2 = SideBarElements()
+    element2.elementName = 'Ürünler'
+    element3 = SideBarElements()
+    element3.elementName = 'Siparişler'
+    element4 = SideBarElements()
+    element4.elementName = 'Müşteri Siparişleri'
+    element5 = SideBarElements()
+    element5.elementName = 'Siparişlerim'
+    element6 = SideBarElements()
+    element6.elementName = 'Müşteriler'
+    element7 = SideBarElements()
+    element7.elementName = 'Bakım'
+    element8 = SideBarElements()
+    element8.elementName = 'Ödemelerim'
+    element9 = SideBarElements()
+    element9.elementName = 'Finans'
+    payment = Payment.objects.all()
+    return render(request,'bayi_Odemelerim.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5, 'element6':element6, 'element7':element7,'element8':element8, 'element9':element9, 'payment':payment})
+
+def Bakım(request):
+    element1 = SideBarElements()
+    element1.elementName = 'Anasayfa'
+    element2 = SideBarElements()
+    element2.elementName = 'Ürünler'
+    element3 = SideBarElements()
+    element3.elementName = 'Siparişler'
+    element4 = SideBarElements()
+    element4.elementName = 'Müşteri Siparişleri'
+    element5 = SideBarElements()
+    element5.elementName = 'Siparişlerim'
+    element6 = SideBarElements()
+    element6.elementName = 'Müşteriler'
+    element7 = SideBarElements()
+    element7.elementName = 'Bakım'
+    element8 = SideBarElements()
+    element8.elementName = 'Ödemelerim'
+    element9 = SideBarElements()
+    element9.elementName = 'Finans'
+    maintenance = Maintenance.objects.all()
+    return render(request,'bayi_Bakım.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5, 'element6':element6, 'element7':element7,'element8':element8, 'element9':element9, 'maintenance':maintenance})

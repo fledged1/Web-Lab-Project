@@ -243,10 +243,26 @@
               </li>
             </ul>
             <li class="nav-item">
-              <a href="/bayi/bayi_Finans.html" class="nav-link">
+              <a href="/bayi/bayi_Bakım.html" class="nav-link">
                 <i class="fas fa-boxes"></i>
                 <p>
                   {{element7.elementName}}
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/bayi/bayi_Odemelerim.html" class="nav-link">
+                <i class="fas fa-boxes"></i>
+                <p>
+                  {{element8.elementName}}
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/bayi/bayi_Finans.html" class="nav-link">
+                <i class="fas fa-boxes"></i>
+                <p>
+                  {{element9.elementName}}
                 </p>
               </a>
             </li>
@@ -310,18 +326,18 @@
                   </tr>
                   </thead>
                   <tbody>
-                  {%for customerorders in customersorders %}
+                  {%for customersorders in customersorders %}
                   <tr>
-                    <td>{{customerorders.orderName}}</td>
-                    <td>{{customerorders.customer.customerName}}</td>
-                    <td>{{customerorders.orderAmount}}</td>
-                    <td>{{customerorders.orderDate}}</td>
-                    <td>{{customerorders.product.productName}}</td>
-                    <td>{{customerorders.product.productPrice}}</td>
-                    <td>{{customerorders.priceSold}}</td>
-                    <td>{{customerorders.estimatedDelivery}}</td>
-                    <td>{{customerorders.profit}}</td>
-                    {%if customerorders.orderStatus%}
+                    <td>{{customersorders.orderName}}</td>
+                    <td>{{customersorders.customer.customerName}}</td>
+                    <td>{{customersorders.orderAmount}}</td>
+                    <td>{{customersorders.orderDate}}</td>
+                    <td>{{customersorders.product.productName}}</td>
+                    <td>{{customersorders.product.productPrice}}</td>
+                    <td>{{customersorders.priceSold}}</td>
+                    <td>{{customersorders.estimatedDelivery}}</td>
+                    <td>{{customersorders.profit}}</td>
+                    {%if customersorders.orderStatus%}
                     <td style="color: green;">
                     <b>Tamamlandı</b>
                     </td>
