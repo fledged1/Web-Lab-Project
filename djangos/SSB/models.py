@@ -20,7 +20,7 @@ class Products (models.Model):
     productPrice = models.IntegerField(default=0,verbose_name='Fiyat')
     estimatedDelivery = models.IntegerField(default=0,verbose_name='Tahmini Teslim Süresi')
     productStock = models.IntegerField(default=0,verbose_name='Stok Adedi')
-    carePeriod = models.IntegerField(default=0,verbose_name='Bakım Periyodu')
+    carePeriod = models.IntegerField(default=0,verbose_name='Bakım Periyodu (gün)')
     def __str__(self):
         return self.productName
 class Materials (models.Model):

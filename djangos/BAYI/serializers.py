@@ -1,8 +1,9 @@
 from django.contrib.auth.models import Group
-from BAYI.models import Customers
+from BAYI.models import CustomersOrders
 from rest_framework import serializers
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
+
     class Meta:
-        model = Customers
-        fields = ['id', 'customerName','customerPhone','customerMail','customerAddress']
+        model = CustomersOrders
+        fields = ('id', 'orderName','priceSold')

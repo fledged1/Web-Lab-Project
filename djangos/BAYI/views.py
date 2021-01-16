@@ -5,6 +5,7 @@ from SSB.models import Products
 from SSB.models import Orders
 from SSB.models import Materials
 from BAYI.models import Customers
+from BAYI.models import CustomersOrders
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
@@ -15,7 +16,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
     """
-    queryset = Customers.objects.all()
+    queryset = CustomersOrders.objects.all()
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
 # Create your views here.
@@ -107,7 +108,8 @@ def MusteriSiparisler(request):
     element6.elementName = 'Müşteriler'
     element7 = SideBarElements()
     element7.elementName = 'Finans'
-    return render(request,'bayi_MusteriSiparis.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5, 'element6':element6, 'element7':element7})
+    customersorders = CustomersOrders.objects.all()
+    return render(request,'bayi_MusteriSiparis.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5, 'element6':element6, 'element7':element7,'customersorders':customersorders})
 
 def Finans(request):
     element1 = SideBarElements()

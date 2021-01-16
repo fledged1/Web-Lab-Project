@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SSB LIFT Panel | Hammaddeler</title>
+  <title>SSB LIFT Panel | Müşteri Siparişleri</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -264,12 +264,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Hammaddeler</h1>
+            <h1>Müşteri Siparişleri</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="http://127.0.0.1:8000">Anasayfa</a></li>
-              <li class="breadcrumb-item active">Hammaddeler</li>
+              <li class="breadcrumb-item active">Müşteri Siparişleri</li>
             </ol>
           </div>
         </div>
@@ -283,46 +283,71 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Buraya Butonlar Gelecek</h3>
+                <div class="col-sm-10">
+                </div>
+                
+                <div class="col-sm-2">
+                <a  class="btn btn-block btn-primary" type="button" href="http://127.0.0.1:8000/admin/BAYI/customersorders/add/" >Yeni Sipariş</a>
+                </div>
+              
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Hammadde Adı</th>
-                    <th>Birimi</th>
-                    <th>Stok Miktarı</th>
-                    <th>Tahmini Temin</th>
-                    <th>Eşik Değer</th>
-                    <th>Birim Fiyat </th>
-                    <th>Son Sipariş Tarihi</th>
-                    
+                    <th>Sipariş Adı</th>
+                    <th>Müşteri</th>
+                    <th>Sipariş Miktarı</th>
+                    <th>Sipariş Tarihi</th>
+                    <th>Ürün</th>
+                    <th>Alış Fiyatı</th>
+                    <th>Satış Fiyatı</th>
+                    <th>Tahmini Teslim</th>
+                    <th>Kar</th>
+                    <th>Sipariş Durumu</th>
+                    <th>İşlemler</th>
                   </tr>
                   </thead>
                   <tbody>
-                  {%for materials in materials%}
+                  {%for customerorders in customersorders %}
                   <tr>
-                    <td>{{materials.materialName}}</td>
-                    <td>{{materials.materialUnit}}</td>
-                    <td>{{materials.materialStockCount}}</td>
-                    <td> {{materials.estimatedSupply}}</td>
-                    <td>{{materials.tresholdValue}}</td>
-                    <td>{{materials.unitPrice}}</td>
-                    <td>{{materials.lastOrder}}</td>
+                    <td>{{customerorders.orderName}}</td>
+                    <td>{{customerorders.customer.customerName}}</td>
+                    <td>{{customerorders.orderAmount}}</td>
+                    <td>{{customerorders.orderDate}}</td>
+                    <td>{{customerorders.product.productName}}</td>
+                    <td>{{customerorders.product.productPrice}}</td>
+                    <td>{{customerorders.priceSold}}</td>
+                    <td>{{customerorders.estimatedDelivery}}</td>
+                    <td>{{customerorders.profit}}</td>
+                    {%if customerorders.orderStatus%}
+                    <td style="color: green;">
+                    <b>Tamamlandı</b>
+                    </td>
+                    {%else%}
+                    <td style="color: red;">
+                    <b>Tamamlanmadı</b></td>
+                    {%endif%}
+                    <td>
+                    <a  class="btn btn-block btn-danger" type="button" href="http://127.0.0.1:8000/admin/BAYI/customersorders/{{customerorders.id}}/change">Düzenle</a>
+                    </td>
                   </tr>
                   {%endfor%}
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>Hammadde Adı</th>
-                    <th>Birimi</th>
-                    <th>Stok Miktarı</th>
-                    <th>Tahmini Temin</th>
-                    <th>Eşik Değer</th>
-                    <th>Birim Fiyat </th>
-                    <th>Son Sipariş Tarihi</th>
-                    
+                    <th>Sipariş Adı</th>
+                    <th>Müşteri</th>
+                    <th>Sipariş Miktarı</th>
+                    <th>Sipariş Tarihi</th>
+                    <th>Ürün</th>
+                    <th>Alış Fiyatı</th>
+                    <th>Satış Fiyatı</th>
+                    <th>Tahmini Teslim</th>
+                    <th>Kar</th>
+                    <th>Sipariş Durumu</th>
+                    <th>İşlemler</th>
                   </tr>
                   </tfoot>
                 </table>

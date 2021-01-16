@@ -10,9 +10,12 @@ def login(request):
 
         user = auth.authenticate(username=username,password=password)
 
-        if user is not None:
+        if user.is_superuser:
             auth.login(request,user)
             return redirect("/")
+        elif user.is_superuser == False:
+            auth.login(request,user)
+            return redirect("/bayi")
         else:
             messages.info(request,'Girilen bilgiler hatalı')
             return redirect('login')

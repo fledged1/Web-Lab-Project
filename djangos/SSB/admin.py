@@ -17,7 +17,7 @@ admin.site.register(Recipes,RecipesAdmin)
 
 
 class ProductsAdmin(admin.ModelAdmin):
-    fields=['productName','productImage','productDescription','productSerial','productPrice','estimatedDelivery','productStock']
+    fields=['productName','productImage','productDescription','productSerial','productPrice','estimatedDelivery','productStock','carePeriod']
 admin.site.register(Products,ProductsAdmin)
 
     

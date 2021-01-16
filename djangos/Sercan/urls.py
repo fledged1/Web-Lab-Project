@@ -21,7 +21,7 @@ from rest_framework import routers
 from BAYI import views
 
 router = routers.DefaultRouter()
-router.register(r'customers', views.GroupViewSet)
+router.register(r'customersorders', views.GroupViewSet)
 
 urlpatterns = [
     
