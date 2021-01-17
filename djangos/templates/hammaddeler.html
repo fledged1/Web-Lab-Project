@@ -118,27 +118,21 @@
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
+          <span class="badge badge-warning navbar-badge">!</span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <span class="dropdown-item dropdown-header">Bildirimler</span>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <a href="/hammaddeler.html" class="dropdown-item">
             
+            {%for materials in materials%}
+                {%if materials.materialStockCount < materials.tresholdValue%}
+                <div class="alert alert-info m-2" id="msg" role="alert">
+                  <b>{{materials.materialName}} eşik değer!</b>
+                </div>
+                {%endif%}
+            {%endfor%}
           </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
@@ -292,8 +286,13 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <div class="col-sm-10">
+              {%for materials in materials%}
+                {%if materials.materialStockCount < materials.tresholdValue%}
+                <div class="alert alert-warning m-2" id="msg" role="alert">
+                  <b>{{materials.materialName}} 'nın stoğu ({{materials.materialStockCount}}) eşik değer ({{materials.tresholdValue}})'in altında!</b>
                 </div>
+                {%endif%}
+              {%endfor%}
                 {%if user.is_superuser%}
                   <div class="col-sm-2">
                     <a  class="btn btn-block btn-primary" type="button" href="admin/SSB/materials/add/" >Yeni Hammadde</a>
@@ -308,10 +307,11 @@
                     <th>Hammadde Adı</th>
                     <th>Birimi</th>
                     <th>Stok Miktarı</th>
-                    <th>Tahmini Temin</th>
                     <th>Eşik Değer</th>
+                    <th>Tahmini Temin</th>
                     <th>Birim Fiyat </th>
                     <th>Son Sipariş Tarihi</th>
+                    <th>İşlemler</th>
                     
                   </tr>
                   </thead>
@@ -321,10 +321,13 @@
                     <td>{{materials.materialName}}</td>
                     <td>{{materials.materialUnit}}</td>
                     <td>{{materials.materialStockCount}}</td>
-                    <td> {{materials.estimatedSupply}}</td>
                     <td>{{materials.tresholdValue}}</td>
+                    <td> {{materials.estimatedSupply}} gün</td>
                     <td>{{materials.unitPrice}}</td>
                     <td>{{materials.lastOrder}}</td>
+                    <td>
+                    <a  class="btn btn-block btn-danger" type="button" href="admin/SSB/materials/{{materials.id}}/change">Düzenle</a>
+                    </td>
                   </tr>
                   {%endfor%}
                   </tbody>
@@ -333,11 +336,11 @@
                     <th>Hammadde Adı</th>
                     <th>Birimi</th>
                     <th>Stok Miktarı</th>
-                    <th>Tahmini Temin</th>
                     <th>Eşik Değer</th>
+                    <th>Tahmini Temin</th>
                     <th>Birim Fiyat </th>
                     <th>Son Sipariş Tarihi</th>
-                    
+                    <th>İşlemler</th>
                   </tr>
                   </tfoot>
                 </table>

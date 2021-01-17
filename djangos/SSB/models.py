@@ -69,3 +69,5 @@ class Orders (models.Model):
         return self.orderName
     def orderTotal(self):
         return self.orderAmount * self.orderedProduct.productPrice
+        
+ 

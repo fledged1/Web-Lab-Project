@@ -274,7 +274,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Finans</h1>
+            <h1>Finans/Ödeme Bildirimleri</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -295,7 +295,7 @@
               <div class="card-header">
                   {%if user.is_superuser%}
                   <div class="col-sm-2">
-                    <a  class="btn btn-block btn-primary" type="button" href="admin/SSB/retailors/add/" >Yeni Bayi</a>
+                    <a  class="btn btn-block btn-primary" type="button" href="admin/BAYI/payment/add/" >Yeni Ödeme Ekle</a>
                   </div>
                   {%endif%} 
               </div>
@@ -305,26 +305,21 @@
                   <thead>
                   <tr>
                     <th>Bayi Adı</th>
-                    <th>Bayi Telefon</th>
-                    <th>Adres</th>
-                    <th>Ciro (TL)</th>
-                    <th>Geçmiş Siparişler</th>
+                    <th>Ödeme Miktarı</th>
+                    <th>Ödeme Kanalı</th>
+                    <th>İlgili Sİpariş</th>
+                    <th>Ödeme Notu</th>
                   </tr>
                   </thead>
                   <tbody>
-                  {%for retailors in retailors%}
+                  {%for payment in payment%}
                   <tr>
-                    <td>{{retailors.retailorName}}</td>
-                    <td>{{retailors.retailorPhone}}</td>
-                    <td>{{retailors.retailorAddress}}</td>  
-                    <td>{{retailors.retailorEndorsement}}</td>
+                    <td>{{payment.retailor}}</td>
+                    <td>{{payment.paymentAmount}}</td>
+                    <td>{{payment.paymentName}}</td>  
+                    <td>{{payment.order}}</td> 
+                    <td>{{payment.paymentNot}}</td>
                     <td>
-                    <form action="siparisgecmisleri.html" method="post">
-                    {%csrf_token%}
-                    <a><button class="btn btn-block btn-success"type="submit" onclick="location.href='{% url 'siparisgecmisleri' %}'" name="bayi">Siparişler</button></a> 
-                    </form>
-                    <a  class="btn btn-block btn-warning" type="button" href="admin/SSB/retailors/{{retailors.id}}/change" >Düzenle</a>
-                    </td>
                   </tr>
                   {%endfor%}
                   </tbody>
@@ -343,11 +338,12 @@
             </div>
             <!-- /.card -->
             <div class="col-md-12">
+              
               <div class="col-md-4">
                 <div class="card card-info">
-              <!--pie chart-->
+                <!--pie chart-->
                   <div class="card-header">
-                  <h3 class="card-title">Fiyatlarına Göre Ürünler</h3>
+                  <h3 class="card-title">Hammadde Stokları</h3>
 
                     <div class="card-tools">
                       <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -386,9 +382,11 @@
                       };
                       </script>
                 </div>
+                
               <!--/.pie chart-->
               <!-- /.card-body -->
             </div>
+            
           </div>
           <!-- /.col -->
         </div>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SSB LIFT Panel | Müşteri Siparişleri</title>
+  <title>SSB LIFT Panel | Ödemelerim</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -280,12 +280,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Müşteri Siparişleri</h1>
+            <h1>Ödemelerim</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="http://127.0.0.1:8000">Anasayfa</a></li>
-              <li class="breadcrumb-item active">Müşteri Siparişleri</li>
+              <li class="breadcrumb-item active">Ödemelerim</li>
             </ol>
           </div>
         </div>
@@ -303,7 +303,7 @@
                 </div>
                 
                 <div class="col-sm-2">
-                <a  class="btn btn-block btn-primary" type="button" href="http://127.0.0.1:8000/admin/BAYI/payment/add/" >Yeni Ödeme Bilgisi Ekle</a>
+                <a  class="btn btn-block btn-primary" type="button" href="http://127.0.0.1:8000/admin/BAYI/payment/add/" >Yeni Ödeme Bildir</a>
                 </div>
               
               </div>
@@ -327,17 +327,6 @@
                     <td>{{payment.paymentAmount}}</td>
                     <td>{{payment.paymentName}}</td>
                     <td>{{payment.paymentNot}}</td>
-                    {%if customersorders.orderStatus%}
-                    <td style="color: green;">
-                    <b>Tamamlandı</b>
-                    </td>
-                    {%else%}
-                    <td style="color: red;">
-                    <b>Tamamlanmadı</b></td>
-                    {%endif%}
-                    <td>
-                    <a  class="btn btn-block btn-danger" type="button" href="http://127.0.0.1:8000/admin/BAYI/customersorders/{{customerorders.id}}/change">Düzenle</a>
-                    </td>
                   </tr>
                   {%endfor%}
                   </tbody>
