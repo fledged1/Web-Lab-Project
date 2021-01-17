@@ -161,10 +161,27 @@ def siparisler(request):
     element7.elementName = 'Finans'
 
     materials = Materials.objects.all()
-    orders = Orders.objects.all()    
-
+    allorders = Orders.objects.all()    
+    products = Products.objects.all()
     
-    return render(request,'siparisler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'orders':orders,'materials':materials})
+    for order in allorders:
+        if order.orderStatus:
+            #a = Products.objects.get(id=order.orderedProduct_id)
+            #print(a.productStock)
+            #a.update(productStock = Products('productStock')- order.orderAmount)
+            #t = Products.objects.filter(id=order.orderedProduct_id)
+            b = Products.objects.get(id=order.orderedProduct_id)
+            b.productStock = b.productStock - order.orderAmount
+            b.save()
+            #t. = t.productStock - order.orderAmount
+            #t.update(productStock)
+    #b = Orders.objects.get(orderAmount=40)
+        #products.update(productStock = b)
+    
+    #print(b.orderStatus)
+    
+
+    return render(request,'siparisler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'allorders':allorders,'materials':materials,'products':products})
 
 def bayiler(request):
     element1 = SideBarElements()

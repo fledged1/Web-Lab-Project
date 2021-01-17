@@ -43,7 +43,15 @@ def home(request):
     element8.elementName = 'Ödemelerim'
     element9 = SideBarElements()
     element9.elementName = 'Finans'
-    return render(request,'bayi_Index.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5, 'element6':element6, 'element7':element7,'element8':element8, 'element9':element9})
+
+    names = []
+    data = []
+    queryset = Products.objects.order_by('-estimatedDelivery')[:5]
+    for product in queryset:
+        names.append(product.productName)
+        data.append(product.estimatedDelivery)
+
+    return render(request,'bayi_Index.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5, 'element6':element6, 'element7':element7,'element8':element8, 'element9':element9,'names':names,'data':data})
 
 def Urunler(request):
     element1 = SideBarElements()
@@ -162,10 +170,10 @@ def Finans(request):
 
     names1 = []
     data1 = []
-    queryset1 = Materials.objects.order_by('-materialStockCount')[:10]
+    queryset1 = Products.objects.order_by('-productPrice')[:10]
     for material in queryset1:
-        names1.append(material.materialName)
-        data1.append(material.materialStockCount)
+        names1.append(product.productName)
+        data1.append(product.productPrice)
     
     return render(request,'bayi_Finans.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5, 'element6':element6, 'element7':element7,'element8':element8, 'element9':element9, 'names': names,'data': data,'names1': names1,'data1': data1,})
 
