@@ -6,4 +6,4 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = CustomersOrders
-        fields = ('id', 'orderName','priceSold')
+        fields = ('id', 'orderName','priceSold','estimatedDelivery','orderDate','orderAmount')
