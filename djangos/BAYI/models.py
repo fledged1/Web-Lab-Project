@@ -55,7 +55,7 @@ class Payment (models.Model):
         return self.paymentBayiName
 
 class Maintenance (models.Model):
-    customerMaintenanceName = models.CharField(max_length=100,verbose_name='Müşteri Adı')
+    customerMaintenanceName = models.CharField(max_length=100,verbose_name='Bakım Adı')
     customer = models.ForeignKey(
         Customers,on_delete=models.DO_NOTHING,verbose_name='Müşteri'
     )

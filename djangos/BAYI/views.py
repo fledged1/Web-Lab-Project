@@ -73,7 +73,8 @@ def Urunler(request):
     element9 = SideBarElements()
     element9.elementName = 'Finans'
     products = Products.objects.all()
-    return render(request,'bayi_Urunler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5, 'element6':element6, 'element7':element7,'element8':element8, 'element9':element9, 'products':products})
+    return render(request,'bayi_Urunler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,
+     'element6':element6, 'element7':element7,'element8':element8, 'element9':element9, 'products':products})
 
 def Musteriler(request):
     element1 = SideBarElements()
@@ -171,11 +172,12 @@ def Finans(request):
     names1 = []
     data1 = []
     queryset1 = Products.objects.order_by('-productPrice')[:10]
-    for material in queryset1:
+    for product in queryset1:
         names1.append(product.productName)
         data1.append(product.productPrice)
-    
-    return render(request,'bayi_Finans.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5, 'element6':element6, 'element7':element7,'element8':element8, 'element9':element9, 'names': names,'data': data,'names1': names1,'data1': data1,})
+    return render(request,'bayi_Finans.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,
+    'element5':element5, 'element6':element6, 'element7':element7,'element8':element8, 'element9':element9, 'names': names,'data': data,
+    'names1': names1,'data1': data1,})
 
 def Odemelerim(request):
     element1 = SideBarElements()

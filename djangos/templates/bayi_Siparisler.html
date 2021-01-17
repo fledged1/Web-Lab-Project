@@ -325,7 +325,14 @@
                     <td>{{orders.orderAmount}}</td>
                     <td>{{orders.orderDate}}</td>
                     <td>{{orders.estimatedDelivery}}</td>
-                    <td>{{orders.orderStatus}}</td>
+                    {%if orders.orderStatus%}
+                    <td style="color: green;">
+                    <b>Tamamlandı</b>
+                    </td>
+                    {%else%}
+                    <td style="color: red;">
+                    <b>Tamamlanmadı</b></td>
+                    {%endif%}
                   </tr>
                   {%endfor%}
                   </tbody>

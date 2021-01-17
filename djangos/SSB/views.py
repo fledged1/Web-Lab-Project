@@ -166,19 +166,10 @@ def siparisler(request):
     
     for order in allorders:
         if order.orderStatus:
-            #a = Products.objects.get(id=order.orderedProduct_id)
-            #print(a.productStock)
-            #a.update(productStock = Products('productStock')- order.orderAmount)
-            #t = Products.objects.filter(id=order.orderedProduct_id)
             b = Products.objects.get(id=order.orderedProduct_id)
             b.productStock = b.productStock - order.orderAmount
             b.save()
-            #t. = t.productStock - order.orderAmount
-            #t.update(productStock)
-    #b = Orders.objects.get(orderAmount=40)
-        #products.update(productStock = b)
-    
-    #print(b.orderStatus)
+            
     
 
     return render(request,'siparisler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'allorders':allorders,'materials':materials,'products':products})
@@ -260,5 +251,8 @@ def finans(request):
     payment = Payment.objects.all()
     materials = Materials.objects.all()
 
-    return render(request,'finans.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,
-    'names': names,'data': data,'names1': names1,'data1': data1,'payment':payment,'materials':materials})
+    return render(request,'finans.html',{'element1':element1,'element2':element2,
+    'element3':element3,'element4':element4,
+    'element5':element5,'element6':element6,'element7':element7,
+    'names': names,'data': data,'names1': names1,'data1': data1,
+    'payment':payment,'materials':materials})
