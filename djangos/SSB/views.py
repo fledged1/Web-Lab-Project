@@ -16,9 +16,6 @@ from BAYI.models import PaymentMethods
     
 def index(request):
 
-    
-   
-   
     #///////SideBar Elements\\\\\\\\
     element1 = SideBarElements()
     element1.elementName = 'Anasayfa'
@@ -34,7 +31,6 @@ def index(request):
     element6.elementName = 'Bayiler'
     element7 = SideBarElements()
     element7.elementName = 'Finans'
-    
 
     materials = Materials.objects.all()
     #piechart
@@ -49,7 +45,10 @@ def index(request):
     ordersCount = Orders.objects.count
 
     
-    return render(request,'index.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'names': names,'data': data,'retailorCount':retailorCount,'ordersCount':ordersCount,'materials':materials})
+    return render(request,'index.html',{'element1':element1,'element2':element2,
+    'element3':element3,'element4':element4,'element5':element5,'element6':element6,
+    'element7':element7,'names': names,'data': data,'retailorCount':retailorCount,
+    'ordersCount':ordersCount,'materials':materials})
 
 
 def hammaddeler(request):
@@ -68,11 +67,12 @@ def hammaddeler(request):
     element7 = SideBarElements()
     element7.elementName = 'Finans'
 
-    
-   
     materials = Materials.objects.all()
     
-    return render(request,'hammaddeler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'materials':materials,})
+    return render(request,'hammaddeler.html',{'element1':element1,
+    'element2':element2,'element3':element3,'element4':element4,
+    'element5':element5,'element6':element6,'element7':element7,
+    'materials':materials,})
 
 def urunler(request):
     element1 = SideBarElements()
@@ -94,7 +94,9 @@ def urunler(request):
 
     products = Products.objects.all()
 
-    return render(request,'urunler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'products':products,'materials':materials})
+    return render(request,'urunler.html',{'element1':element1,'element2':element2,
+    'element3':element3,'element4':element4,'element5':element5,'element6':element6,
+    'element7':element7,'products':products,'materials':materials})
 
 def receteler(request):
     element1 = SideBarElements()
@@ -116,10 +118,11 @@ def receteler(request):
     
     
     recipes = Recipes.objects.all()
-   
-    
 
-    return render(request,'receteler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'recipes':recipes,'materials':materials})
+    return render(request,'receteler.html',{'element1':element1,
+    'element2':element2,'element3':element3,'element4':element4,
+    'element5':element5,'element6':element6,'element7':element7,
+    'recipes':recipes,'materials':materials})
 
 def recetehammaddeler(request):
     element1 = SideBarElements()
@@ -163,16 +166,18 @@ def siparisler(request):
     materials = Materials.objects.all()
     allorders = Orders.objects.all()    
     products = Products.objects.all()
-    
+
+    #Tamamlanan Siparişleri Stoktan Düş
     for order in allorders:
         if order.orderStatus:
             b = Products.objects.get(id=order.orderedProduct_id)
             b.productStock = b.productStock - order.orderAmount
             b.save()
-            
-    
 
-    return render(request,'siparisler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'allorders':allorders,'materials':materials,'products':products})
+    return render(request,'siparisler.html',{'element1':element1,
+    'element2':element2,'element3':element3,'element4':element4,
+    'element5':element5,'element6':element6,'element7':element7,
+    'allorders':allorders,'materials':materials,'products':products})
 
 def bayiler(request):
     element1 = SideBarElements()
@@ -194,7 +199,10 @@ def bayiler(request):
     materials = Materials.objects.all()
     retailors = Retailors.objects.all()   
     
-    return render(request,'bayiler.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,'element5':element5,'element6':element6,'element7':element7,'retailors':retailors,'materials':materials})
+    return render(request,'bayiler.html',{'element1':element1,
+    'element2':element2,'element3':element3,'element4':element4,
+    'element5':element5,'element6':element6,'element7':element7,
+    'retailors':retailors,'materials':materials})
 
 def siparisgecmisleri(request):
     element1 = SideBarElements()
