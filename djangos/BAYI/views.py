@@ -162,6 +162,7 @@ def Finans(request):
     element9 = SideBarElements()
     element9.elementName = 'Finans'
     
+    customersorders = CustomersOrders.objects.all()
     names = []
     data = []
     queryset = Products.objects.order_by('-productPrice')[:5]
@@ -177,7 +178,7 @@ def Finans(request):
         data1.append(product.productPrice)
     return render(request,'bayi_Finans.html',{'element1':element1,'element2':element2,'element3':element3,'element4':element4,
     'element5':element5, 'element6':element6, 'element7':element7,'element8':element8, 'element9':element9, 'names': names,'data': data,
-    'names1': names1,'data1': data1,})
+    'names1': names1,'data1': data1,'customersorders':customersorders})
 
 def Odemelerim(request):
     element1 = SideBarElements()

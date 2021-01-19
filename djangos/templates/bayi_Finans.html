@@ -308,37 +308,25 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Bayi Adı</th>
-                    <th>Bayi Telefon</th>
-                    <th>Adres</th>
-                    <th>Ciro (TL)</th>
-                    <th>Geçmiş Siparişler</th>
+                    <th>Ürün Adı</th>
+                    <th>Satış Adedi</th>
+                    <th>Edilen Kar (TL)</th>
                   </tr>
                   </thead>
                   <tbody>
-                  {%for retailors in retailors%}
+                  {%for customersorders in customersorders%}
                   <tr>
-                    <td>{{retailors.retailorName}}</td>
-                    <td>{{retailors.retailorPhone}}</td>
-                    <td>{{retailors.retailorAddress}}</td>  
-                    <td>{{retailors.retailorEndorsement}}</td>
-                    <td>
-                    <form action="siparisgecmisleri.html" method="post">
-                    {%csrf_token%}
-                    <a><button class="btn btn-block btn-success"type="submit" onclick="location.href='{% url 'siparisgecmisleri' %}'" name="bayi">Siparişler</button></a> 
-                    </form>
-                    <a  class="btn btn-block btn-warning" type="button" href="admin/SSB/retailors/{{retailors.id}}/change" >Düzenle</a>
-                    </td>
+                    <td>{{customersorders.product.productName}}</td>
+                    <td>{{customersorders.orderAmount}}</td>
+                    <td>{{customersorders.profit}}</td>
                   </tr>
                   {%endfor%}
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>Bayi Adı</th>
-                    <th>Bayi Telefon</th>
-                    <th>Adres</th>
-                    <th>Ciro (TL)</th>
-                    <th>Geçmiş Siparişler</th>
+                    <th>Ürün Adı</th>
+                    <th>Satış Adedi</th>
+                    <th>Edilen Kar (TL)</th>
                   </tr>
                   </tfoot>
                 </table>
